@@ -10,7 +10,8 @@ const routes = require("./routes")
 const db= require("./db")
 
 var mongodbUri = require('mongodb-uri');
-const uri = "mongodb+srv://joey3:rose44@cluster0-ptuvd.gcp.mongodb.net/passport?retryWrites=true";
+
+const uri = process.env.MONGODB_URI;
 var mongooseConnectString = mongodbUri.formatMongoose(uri);
 mongoose.connect(mongooseConnectString,  { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false});
 var cluster = mongoose.connection;
