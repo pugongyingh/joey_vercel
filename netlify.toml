@@ -1,0 +1,17 @@
+[build]
+  Command = "npm run build"
+  Functions = "lambda"
+  Publish = "build"
+
+  [[redirects]]
+  from = "/*"
+  to = "/dashboard"
+  status = 200
+  force = false
+  query = {path = ":path"} # apply this rule for /?path=example
+  conditions = {Role = ["admin"]}
+      
+[[redirects]]
+  from = "/*"
+  to = "/login"
+  status = 302

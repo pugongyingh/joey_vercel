@@ -4,10 +4,14 @@ const compression = require("compression");
 const mongoose = require('mongoose')
 var session = require("express-session");
 mongoose.set('useCreateIndex', true)
-// const passport = require("passport");
+
+//const passport = require("passport");
 const passportControl = require('./lib/passport-control');
 const routes = require("./routes")
 const db= require("./db")
+
+
+// const passport = require("passport");
 
 var mongodbUri = require('mongodb-uri');
 
@@ -22,16 +26,21 @@ cluster.once('open', function callback () {
 });
 
 
+
+
+
+
 const express = require('express');
 const app = express();
-const PORT = process.env.PORT || 3000;
+
+const PORT = process.env.PORT;
 
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(express.static("public"));
 app.use(compression());
 if (process.env.NODE_ENV === "production") {
-	app.use(express.static("./build"));
+	app.use(express.static("./public"));
   }
 app.use(
 	session({ secret: "keyboard cat", resave: true, saveUninitialized: true })
