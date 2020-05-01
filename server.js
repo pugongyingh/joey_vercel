@@ -12,6 +12,7 @@ const db= require("./db")
 var mongodbUri = require('mongodb-uri');
 
 const uri = process.env.MONGODB_URI;
+
 var mongooseConnectString = mongodbUri.formatMongoose(uri);
 mongoose.connect(mongooseConnectString,  { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false});
 var cluster = mongoose.connection;
@@ -51,12 +52,12 @@ app.use(function(req, res, next) {
 		console.log(req.session)
 		console.log(req.user)
 		console.log('===== END =======')
-})
-
+})/*
 
 // Run server
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/LingoLabs", { useCreateIndex: true,
 useNewUrlParser: true,useUnifiedTopology: true, useFindAndModify:false},);
+*/
 
 db.UserInfo.create({username:"nobody", email:"somethng@smoething.com"},
 function(){db.Item.create({itemname:"Niko Site #1", price:1200.00})
